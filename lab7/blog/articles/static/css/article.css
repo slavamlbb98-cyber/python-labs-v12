@@ -1,0 +1,54 @@
+body {
+    background: #1abc9c;
+    font-family: Tahoma, Arial, sans-serif;
+    color: #ffffff;
+}
+
+a {
+    color: #ffffff;
+}
+
+body.archive {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.header img {
+    display: block;
+    width: 318px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.article-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+body.article {
+    margin: 0;
+    padding: 16px;
+}
+
+.article-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.article-header a {
+    font-weight: bold;
+}
+
+.archive-nav {
+    text-align: right;
+}
+
+.one-post.folded .article-info,
+.one-post.folded .article-text {
+    display: none;
+}
