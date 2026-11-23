@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Добавление работы сотрудника</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="article">
+    <header class="article-header">
+        <img src="{% static 'logo.png' %}" alt="Логотип кафедры" height="50">
+        <a href="{% url 'archive' %}">Все записи</a>
+    </header>
+
+    <main>
+        <h1>Добавление работы сотрудника</h1>
+
+        <form method="post" action="{% url 'create_post' %}">
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <p role="alert">{{ form.errors }}</p>
+            {% endif %}
+
+            <p>
+                <label for="title">Название работы</label><br>
+                <input type="text" id="title" name="title"
+                       value="{{ form.title }}" size="45">
+            </p>
+
+            <p>
+                <label for="text">Описание работы</label><br>
+                <textarea id="text" name="text" rows="6" cols="45">{{ form.text }}</textarea>
+            </p>
+
+            <button type="submit">Сохранить работу</button>
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,21 @@
+from django.contrib.auth.models import User
+from django.db import models
+
+
+class Article(models.Model):
+    title = models.CharField("Название работы", max_length=200)
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        verbose_name="Автор записи",
+    )
+    text = models.TextField("Описание работы")
+    created_date = models.DateField("Дата создания записи", auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.author.username}: {self.title}"
+
+    def get_excerpt(self):
+        if len(self.text) > 140:
+            return self.text[:140] + "..."
+        return self.text
