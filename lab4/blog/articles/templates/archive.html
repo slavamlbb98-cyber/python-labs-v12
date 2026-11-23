@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Архив статей</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="archive">
+    <div class="header">
+        <img src="{% static 'logo.png' %}" alt="Логотип кафедры" height="50">
+        <h1>Архив дополнительных работ кафедры</h1>
+    </div>
+
+    <div class="archive">
+        {% for post in posts %}
+            <div class="one-post">
+                <h2 class="post-title">
+                    <a href="{% url 'get_article' post.id %}">{{ post.title }}</a>
+                </h2>
+
+                <div class="article-info">
+                    <span class="article-author">Автор: {{ post.author.username }}</span>
+                    <span class="article-created-date">Дата: {{ post.created_date }}</span>
+                </div>
+
+                <p class="article-text">{{ post.get_excerpt }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
